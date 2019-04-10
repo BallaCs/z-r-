@@ -21,7 +21,7 @@
                                 //echo '<a href="poszt-torles.php?id=' .$row['Post_ID'] .'"><i class="fas fa-trash-alt"></i> Törlés</a>';
                                 echo '<a href="#" onclick="confirmTorles(\'poszt-torles.php?id=' .$row['Post_ID'] .'\')"><i class="fas fa-trash-alt"></i> Törlés</a>';
                             }  
-                            echo '<a href="post.php?id=' . $row['Post_ID'] . '&cim=' . $row['cim'] . '">';
+                            echo '<a href="single-post.php?id=' . $row['Post_ID'] . '&cim=' . $row['cim'] . '">';
                             if ($row['Kep_ID'] != 0) {
                                 $kep_id = $row['Kep_ID'];
                                 $sql = "SELECT utvonal FROM kep WHERE Kep_ID = '$kep_id' ORDER BY Kep_ID DESC LIMIT 1;";
