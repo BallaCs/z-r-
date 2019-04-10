@@ -31,7 +31,8 @@ if (isset($_GET['nev']) && isset($_GET['id'])) {
                         if (isset($_SESSION['username'])){
                             echo '
                             <a href="kep-szerkesztes.php?id=' .$row['Kep_ID'] .'"><i class="fas fa-edit"></i> Áthelyezés</a>';
-                            echo '<a href="kep-torles.php?id=' .$row['Kep_ID'] .'"><i class="fas fa-trash-alt"></i> Törlés</a>';
+                            //echo '<a href="kep-torles.php?id=' .$row['Kep_ID'] .'"><i class="fas fa-trash-alt"></i> Törlés</a>';
+                            echo '<a href="#" onclick="confirmTorles(\'kep-torles.php?id=' .$row['Kep_ID'] .'\')"><i class="fas fa-trash-alt"></i> Törlés</a>';
                         }            
                     echo '</div>
                 </div>';

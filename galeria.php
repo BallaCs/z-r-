@@ -63,7 +63,8 @@
                     if (isset($_SESSION['username'])){
                       echo '
                       <a href="album-szerkesztes.php?id=' .$row['Album_ID'] .'"><i class="fas fa-edit"></i> Átnevezés</a>';
-                      echo '<a href="album-torles.php?id=' .$row['Album_ID'] .'"><i class="fas fa-trash-alt"></i> Törlés</a>';
+                      //echo '<a href="album-torles.php?id=' .$row['Album_ID'] .'"><i class="fas fa-trash-alt"></i> Törlés</a>';
+                      echo '<a href="#" onclick="confirmTorles(\'album-torles.php?id=' .$row['Album_ID'] .'\')"><i class="fas fa-trash-alt"></i> Törlés</a>';
                   } 
                     echo '</div>
                 </div>';
@@ -74,4 +75,11 @@
 </div>
 </div>
 <?php $conn->close(); ?>
+<script>
+     $( document ).ready(function() {
+    $("#galiera").addClass("active");
+    console.log("kaki")
+});
+     </script>
 <?php require 'lablec.php'; ?>
+

@@ -1,1 +1,1 @@
-$(document).ready(function(){$("li.active").removeClass("active"),$('a[href="'+location.pathname+'"]').closest("li").addClass("active")});
+function confirmTorles(redirectUrl){confirm("Biztos hogy törolni szeretnéd?")&&(window.location.href=redirectUrl)}$(".mr-auto").on("click","li",function(){$(".mr-auto li.active").removeClass("active")});

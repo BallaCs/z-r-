@@ -1,0 +1,36 @@
+.fooldal {
+    .welcome {
+        background-image: url("assets/kepek/rendelo39.jpg");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            text-align: center;
+            width: 100%;
+            height: 80vh;
+            background-size: cover;
+            margin-bottom: 30px;
+        h1 {
+            position: relative;
+            top: 30%;
+            font-size: 500%;
+            color: #fff;
+            text-shadow: 2px 2px 4px #000;
+        }
+    }
+
+    .post-preview {
+        height: 40vh;
+        a {
+            color: #fff;
+        }
+        img {
+            width: 100%;
+            object-fit: cover;
+            height: 70%;
+        }
+    }
+
+    .sidebar {
+        border: 1px solid #fff;
+    }
+}
+    

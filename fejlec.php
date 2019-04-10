@@ -26,10 +26,10 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" href="index.php">Kezdőlap<span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" id="galiera">
         <a class="nav-link" href="galeria.php">Galéria</a>
       </li>
       <li class="nav-item dropdown">
@@ -48,7 +48,7 @@
         <a class="nav-link" href="megemlitesek.php">Megemlítések</a>
       </li>
       <li class="nav-item">
-        <a href=""> <?php echo basename(__FILE__); ?></a>
+        <a class="nav-link" href=""> <?php echo basename(__FILE__); ?></a>
       </li>
     </ul>
     <?php if (isset($_SESSION['username'])) {
