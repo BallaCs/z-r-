@@ -47,13 +47,15 @@
       <li class="nav-item">
         <a class="nav-link" href="megemlitesek.php">Megemlítések</a>
       </li>
+      <li class="nav-item">
+        <a href=""> <?php echo basename(__FILE__); ?></a>
+      </li>
     </ul>
     <?php if (isset($_SESSION['username'])) {
       echo '<ul class="nav navbar-nav navbar-right">
               <li><a href="kijelentkezes.php"><i class="fas fa-user-slash"></i> Kijelentkezés</a></li>
             </ul>';
-    }?>
-
+    }?>   
   </div>
   </div>
 </nav>

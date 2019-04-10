@@ -16,7 +16,7 @@
             <?php 
             require 'connect.php';
 
-            $sql = "SELECT link, Link_ID FROM linkmegoszt WHERE tipus=3 ORDER BY Link_ID DESC;";
+            $sql = "SELECT link, Link_ID, link_kep, link_cim, link_text FROM linkmegoszt WHERE tipus=3 ORDER BY Link_ID DESC;";
             $result = $conn->query($sql);
             $resultCeck = mysqli_num_rows($result);
             if ($resultCeck > 0) {
@@ -26,8 +26,14 @@
                     if (isset($_SESSION['username'])){
                         echo '<a href="link-torles.php?id=' .$row['Link_ID'] .'&type=3"><i class="fas fa-trash-alt"></i> Törlés</a>';
                     } 
-                    $received_url = $row['link'];
-                    include 'link-preview.php';
+                    echo '<div class="row">';
+                        echo '<div class="col-6">';
+                             echo "<img src='" . $row['link_kep'] . "' alt='Preview image'>";
+                        echo "</div>";
+                        echo '<div class="col-6">';                     
+                            echo "<h3>" . $row['link_cim'] . "</h3><p>" . $row['link_text'] . "</p>";
+                            echo '<a href="'. $row['link'] .'">Tekintsd meg az eredeti oldalon!</a>';
+                    echo "</div></div>";
                     
                     echo '</div>';
                 }
