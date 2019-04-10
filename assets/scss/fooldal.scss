@@ -15,6 +15,21 @@
             color: #fff;
             text-shadow: 4px 4px 10px #000;
         }
+        @media only screen and (max-width: 600px) {
+            h1 {
+                font-size: 400%;
+            }
+        }
+        @media only screen and (max-width: 400px) {
+            h1 {
+                font-size: 300%;
+            }
+        }
+        @media only screen and (max-width: 320px) {
+            h1 {
+                font-size: 200%;
+            }
+        }
     }
 
     .post-preview {
@@ -26,6 +41,21 @@
             width: 100%;
             object-fit: cover;
             height: 65%;
+        }
+        @media only screen and (max-width: 320px) {
+            h2 {
+                font-size: 150%;
+            }
+        }
+        @media only screen and (max-width: 224px) {
+            h2 {
+                font-size: 100%;
+            }
+        }
+        @media only screen and (max-width: 254px) {
+            
+                margin-bottom: 30px;
+            
         }
     }
 

@@ -4,7 +4,7 @@
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-8">
+            <div class="col-12 col-md-8">
                 <div class="row">
                 <?php
                     require 'connect.php';
@@ -14,7 +14,7 @@
                     if ($resultCeck > 0) {
                         while($row = mysqli_fetch_assoc($result))
                         {   
-                            echo '<div class="col-6"><div class="post-preview">';
+                            echo '<div class="col-12 col-sm-6"><div class="post-preview">';
 
                             if (isset($_SESSION['username'])){
                                 echo '<a href="poszt-szerkesztes.php?id=' .$row['Post_ID'] .'"><i class="fas fa-edit"></i> Szerkesztés</a>';
@@ -43,7 +43,7 @@
                 ?>
                 </div>
             </div>
-            <div class="col-4 sidebar">
+            <div class="d-none d-md-block col-md-4 sidebar">
             <?php if (isset($_SESSION['username'])){ ?>
                 <div class="container">
                     <div class="row justify-content-center">

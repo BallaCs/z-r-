@@ -25,15 +25,15 @@ if (isset($_GET['nev']) && isset($_GET['id'])) {
             {   
                 $utvonal = $row['utvonal'];
                 echo 
-                '<div class="col-3">
-                    <div class="kep_framer">               
-                        <img src=' . $utvonal . ' onclick="openModal();currentSlide('.$i.')">';  
-                        if (isset($_SESSION['username'])){
-                            echo '
-                            <a href="kep-szerkesztes.php?id=' .$row['Kep_ID'] .'"><i class="fas fa-edit"></i> Áthelyezés</a>';
-                            //echo '<a href="kep-torles.php?id=' .$row['Kep_ID'] .'"><i class="fas fa-trash-alt"></i> Törlés</a>';
-                            echo '<a href="#" onclick="confirmTorles(\'kep-torles.php?id=' .$row['Kep_ID'] .'\')"><i class="fas fa-trash-alt"></i> Törlés</a>';
-                        }            
+                '<div class="col-6 col-sm-3">';
+                if (isset($_SESSION['username'])){
+                    echo '
+                    <a href="kep-szerkesztes.php?id=' .$row['Kep_ID'] .'"><i class="fas fa-edit"></i> Áthelyezés</a>';
+                    //echo '<a href="kep-torles.php?id=' .$row['Kep_ID'] .'"><i class="fas fa-trash-alt"></i> Törlés</a>';
+                    echo '<a href="#" onclick="confirmTorles(\'kep-torles.php?id=' .$row['Kep_ID'] .'\')"><i class="fas fa-trash-alt"></i> Törlés</a>';
+                }  
+                    echo '<div class="kep_framer">               
+                        <img src=' . $utvonal . ' onclick="openModal();currentSlide('.$i.')">';            
                     echo '</div>
                 </div>';
                 $i++;

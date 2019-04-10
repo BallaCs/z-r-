@@ -44,6 +44,7 @@
 <?php require 'connect.php'; ?>
 <div class="galeria">
 <div class="container">
+<h1>Galéria</h1>
 <div class="row">
     <?php
         $sql = "SELECT Album_ID, albumNev FROM album  ORDER BY Album_ID DESC;";
@@ -57,15 +58,15 @@
                 $row2 = mysqli_fetch_assoc($result2);
                 $utvonal = $row2["utvonal"];
                 echo 
-                '<div class="col-4">
-                  <div class="album_framer">               
-                    <a href="album.php?id=' . $row['Album_ID'] . '&nev=' . $row['albumNev'] . '"><img src=' . $utvonal . '><p>' . $row['albumNev'] . '</p></a>';               
-                    if (isset($_SESSION['username'])){
-                      echo '
-                      <a href="album-szerkesztes.php?id=' .$row['Album_ID'] .'"><i class="fas fa-edit"></i> Átnevezés</a>';
-                      //echo '<a href="album-torles.php?id=' .$row['Album_ID'] .'"><i class="fas fa-trash-alt"></i> Törlés</a>';
-                      echo '<a href="#" onclick="confirmTorles(\'album-torles.php?id=' .$row['Album_ID'] .'\')"><i class="fas fa-trash-alt"></i> Törlés</a>';
-                  } 
+                '<div class="col-12 col-sm-6 col-md-4">';
+                if (isset($_SESSION['username'])){
+                  echo '
+                  <a href="album-szerkesztes.php?id=' .$row['Album_ID'] .'"><i class="fas fa-edit"></i> Átnevezés</a>';
+                  //echo '<a href="album-torles.php?id=' .$row['Album_ID'] .'"><i class="fas fa-trash-alt"></i> Törlés</a>';
+                  echo '<a href="#" onclick="confirmTorles(\'album-torles.php?id=' .$row['Album_ID'] .'\')"><i class="fas fa-trash-alt"></i> Törlés</a>';
+              } 
+                  echo '<div class="album_framer">               
+                    <a href="album.php?id=' . $row['Album_ID'] . '&nev=' . $row['albumNev'] . '"><img src=' . $utvonal . '><p>' . $row['albumNev'] . '</p></a>';
                     echo '</div>
                 </div>';
             }

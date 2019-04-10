@@ -23,7 +23,7 @@ if (isset($_GET['cim']) && isset($_GET['id'])) {
                     echo   '<h1>' . $row['cim'] . '</h1>';
                 }
                 echo '<div class="row">';
-                echo '<div class="col-6">';
+                echo '<div class="col-12 col-md-6">';
                 if ($row['Kep_ID'] != 0) {
                     $kep_id = $row['Kep_ID'];
                     $sql = "SELECT utvonal FROM kep WHERE Kep_ID = '$kep_id' ORDER BY Kep_ID DESC LIMIT 1;";
@@ -34,14 +34,16 @@ if (isset($_GET['cim']) && isset($_GET['id'])) {
                     echo '<img src=' . $utvonal . '>';
                 }
                 echo '</div>';
-                echo '<div class="col-6">';
+                echo '<div class="col-12 col-md-6">';
                 if ($row['szoveg'] != NULL) {
                     echo   '<p>' . $row['szoveg'] . '</p>';
                 }
                 echo '</div></div>';
                 if ($row['video'] != NULL) {
                     $video = $row['video'];
-                    echo '<iframe width="1110" height="625"  src="https://www.youtube.com/embed/' . $video . '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+                    echo '<div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item"  src="https://www.youtube.com/embed/' . $video . '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>';
                 }
 
                 if (isset($_SESSION['username'])){
@@ -68,7 +70,7 @@ if (isset($_GET['cim']) && isset($_GET['id'])) {
             if ($resultCeck > 0) {
                 while($row = mysqli_fetch_assoc($result))
                 {   
-                    echo '<div class="col-3"><div class="post-preview">';
+                    echo '<div class="col-6 col-sm-4 col-md-3"><div class="post-preview">';
                         echo '<a href="single-post.php?id=' . $row['Post_ID'] . '&cim=' . $row['cim'] . '">';
                             if ($row['Kep_ID'] != 0) {
                                 $kep_id = $row['Kep_ID'];

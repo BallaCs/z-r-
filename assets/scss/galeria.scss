@@ -1,7 +1,11 @@
 .galeria {
+    h1 {
+        text-align: center;
+        color: #fff;
+    }
     .album_framer {
         
-        height: 250px;
+        height: 30vh;
         background-color: color($szinek, elsodleges);
         position: relative;
         vertical-align: middle;
@@ -23,6 +27,7 @@
             left: 16px;
             font-weight: bold;
             color: #fff;
+            text-shadow: 4px 4px 10px #000;
         }
     }
     .album_framer:hover {

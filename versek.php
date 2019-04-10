@@ -1,6 +1,8 @@
 <?php require 'fejlec.php'; ?>
 <?php require 'connect.php'; ?>
+<div class="poszt">
 <div class="container">
+    <h1>Versek</h1>
     <?php
         $sql = "SELECT cim, szoveg, Kep_ID, vers, datum, Post_ID, video, DATE_FORMAT(datum, '%Y-%m-%d') AS date FROM post WHERE vers = 1 ORDER BY `date` DESC, `Post_ID` DESC;";
         $result = $conn->query($sql);
@@ -8,7 +10,7 @@
         if ($resultCeck > 0) {
             while($row = mysqli_fetch_assoc($result))
             {   
-                echo '<div class="poszt">';
+                //echo '<div class="poszt">';
                 if ($row['cim'] != NULL) {
                     echo   '<h2>' . $row['cim'] . '</h2>';
                 }
@@ -28,7 +30,9 @@
                 }
                 if ($row['video'] != NULL) {
                     $video = $row['video'];
-                    echo '<iframe width="1110" height="625"  src="https://www.youtube.com/embed/' . $video . '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+                    echo '<div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item"  src="https://www.youtube.com/embed/' . $video . '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>';
                 }
 
                 if (isset($_SESSION['username'])){
