@@ -15,9 +15,14 @@
             left: 0;
             right: 0;
             margin: auto;
+            z-index: -1;
         }
         img:hover {
             box-shadow: 0 0 15px;
+        }
+
+        a {
+            z-index: 1;
         }
     }
 

@@ -15,7 +15,7 @@ if(isset($_POST['submit']) && !empty($_POST['nev']) && !empty($_POST['jelszo']))
         mysqli_query($conn, $sql);
         $conn->close();
         
-        echo $nev . $jelszo;
+        //echo $nev . $jelszo;
         */
         
         $sql = "SELECT FelhasznaloNev, Jelszo FROM szerkeszto WHERE (FelhasznaloNev = '$nev') AND (Jelszo = '$jelszo');";
@@ -31,6 +31,7 @@ if(isset($_POST['submit']) && !empty($_POST['nev']) && !empty($_POST['jelszo']))
         }else{
                 $conn->close();
 		header("Location: index.php?login=error"); 
-        }        
+        }  
+              
 }
 ?>

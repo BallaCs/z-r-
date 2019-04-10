@@ -7,17 +7,18 @@ if(isset($_POST['submit']) && $_FILES["file"]["error"][0] != 4 && !empty($_POST[
     //Count total files
     $countfiles = mysqli_real_escape_string($conn, count($_FILES['file']['name']));
 
+    $conn->close();
  //Looping all files
  for($i=0;$i<$countfiles;$i++){
  
      if ($_FILES["file"]["error"][$i] == 0) {
         //$file = $_FILES['file'][$i];
 
-        $fileName = mysqli_real_escape_string($conn, $_FILES['file']['name'][$i]);
-        $fileTmpName = mysqli_real_escape_string($conn, $_FILES['file']['tmp_name'][$i]);
-        $fileSize = mysqli_real_escape_string($conn, $_FILES['file']['size'][$i]);
-        $fileError = mysqli_real_escape_string($conn, $_FILES['file']['error'][$i]);
-        $fileType = mysqli_real_escape_string($conn, $_FILES['file']['type'][$i]);
+        $fileName = $_FILES['file']['name'][$i];
+        $fileTmpName = $_FILES['file']['tmp_name'][$i];
+        $fileSize = $_FILES['file']['size'][$i];
+        $fileError = $_FILES['file']['error'][$i];
+        $fileType = $_FILES['file']['type'][$i];
 
         $fileExt = explode('.', $fileName);
         $fileActualExt = strtolower(end($fileExt));
@@ -33,7 +34,7 @@ if(isset($_POST['submit']) && $_FILES["file"]["error"][0] != 4 && !empty($_POST[
                 echo "Túl nagy fájl méret (nagyobb mint 2mb)";
             }
             echo 'átment';
-            
+            require 'connect.php';
             $sql = "SELECT Album_ID FROM album WHERE albumNev = '$album' ORDER BY Album_ID DESC LIMIT 1;";
             $result = mysqli_query($conn, $sql);
             $row = mysqli_fetch_assoc($result);
