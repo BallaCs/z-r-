@@ -48,7 +48,7 @@ if(isset($_POST['submit']) && $_FILES["file"]["error"][0] != 4 && !empty($_POST[
         }
     }
   echo 'bent';
-
+  header("Location: galeria.php");
 
 
 
@@ -61,6 +61,6 @@ if(isset($_POST['submit']) && $_FILES["file"]["error"][0] != 4 && !empty($_POST[
     echo $_FILES["file"]["error"][0];
     var_dump(!empty($_POST['album']));
 }
-//header("Location: index.php");
+header("Location: galeria.php");
 
 ?>
