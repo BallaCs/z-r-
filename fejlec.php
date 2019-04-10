@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
-    <title>Document</title>
+    <title>Hegedűs Gyöngyi</title>
 </head>
 <body>
 
@@ -26,13 +26,13 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
+      <li class="nav-item" id="kezdolap">
         <a class="nav-link" href="index.php">Kezdőlap<span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item" id="galiera">
+      <li class="nav-item" id="galeria">
         <a class="nav-link" href="galeria.php">Galéria</a>
       </li>
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown" id="publikaciok">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Publikációk
         </a>
@@ -41,14 +41,11 @@
           <a class="dropdown-item" href="egyeb-publikaciok.php">Egyéb</a>
         </div>
       </li>
-      <li class="nav-item">
+      <li class="nav-item"  id="versek">
         <a class="nav-link" href="versek.php">Versek</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" id="megemlitesek">
         <a class="nav-link" href="megemlitesek.php">Megemlítések</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href=""> <?php echo basename(__FILE__); ?></a>
       </li>
     </ul>
     <?php if (isset($_SESSION['username'])) {

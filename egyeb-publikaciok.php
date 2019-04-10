@@ -24,7 +24,9 @@
                 {
                     echo '<div class="col-6">';
                     if (isset($_SESSION['username'])){
-                        echo '<a href="link-torles.php?id=' .$row['Link_ID'] .'&type=2"><i class="fas fa-trash-alt"></i> Törlés</a>';
+                        //echo '<a href="link-torles.php?id=' .$row['Link_ID'] .'&type=2"><i class="fas fa-trash-alt"></i> Törlés</a>';
+                        echo '<a href="#" onclick="confirmTorles(\'link-torles.php?id=' .$row['Link_ID'] .'&type=2\')"><i class="fas fa-trash-alt"></i> Törlés</a>';
+
                     } 
                     echo '<div class="row">';
                         echo '<div class="col-6">';
@@ -44,4 +46,9 @@
         </div>
     </div>
 </div>
+<script>
+    $( document ).ready(function() {
+      $("#publikaciok").addClass("active");
+    });
+</script>
 <?php require 'lablec.php'; ?>

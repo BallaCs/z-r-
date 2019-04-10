@@ -55,7 +55,7 @@
                 </div>
             <?php } ?>
             <div class="container">
-        <h2>Cikkek rólam</h2>
+        <h2>Ajánlott cikkek</h2>
         <div class="row">
             <?php 
             require 'connect.php';
@@ -66,9 +66,9 @@
             if ($resultCeck > 0) {
                 while($row = mysqli_fetch_assoc($result))
                 {   
-                    echo '<div class="col-6">';
                     if (isset($_SESSION['username'])){
-                        echo '<a href="link-torles.php?id=' .$row['Link_ID'] .'&type=3"><i class="fas fa-trash-alt"></i> Törlés</a>';
+                        //echo '<a href="link-torles.php?id=' .$row['Link_ID'] .'&type=3"><i class="fas fa-trash-alt"></i> Törlés</a>';
+                        echo '<a href="#" onclick="confirmTorles(\'link-torles.php?id=' .$row['Link_ID'] .'&type=4\')"><i class="fas fa-trash-alt"></i> Törlés</a>';
                     } 
                     echo '<div class="row">';
                         echo '<div class="col-12">';
@@ -78,8 +78,6 @@
                             echo "<h3>" . $row['link_cim'] . "</h3><p>" . $row['link_text'] . "</p>";
                             echo '<a href="'. $row['link'] .'">Tekintsd meg az eredeti oldalon!</a>';
                     echo "</div></div>";
-                    
-                    echo '</div>';
                 }
             }
             ?>
@@ -91,3 +89,8 @@
         </div>
     </div>
 </div>
+<script>
+    $( document ).ready(function() {
+      $("#kezdolap").addClass("active");
+    });
+</script>

@@ -76,10 +76,9 @@
 </div>
 <?php $conn->close(); ?>
 <script>
-     $( document ).ready(function() {
-    $("#galiera").addClass("active");
-    console.log("kaki")
-});
-     </script>
+    $( document ).ready(function() {
+      $("#galeria").addClass("active");
+    });
+</script>
 <?php require 'lablec.php'; ?>
 

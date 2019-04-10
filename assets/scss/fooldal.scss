@@ -25,12 +25,17 @@
         img {
             width: 100%;
             object-fit: cover;
-            height: 70%;
+            height: 65%;
         }
     }
 
     .sidebar {
         border: 1px solid #fff;
+        img {
+            width: 100%;
+            height: 20vh;
+            object-fit: cover;
+        }
     }
 }
     

@@ -134,17 +134,6 @@ if(isset($_POST['submit']) && !empty($_POST['link'])){
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-   
 }
 if ($link_type == 1) {
     header("Location: kepilelegeztetes.php");

@@ -46,4 +46,9 @@
     ?>
 </div>
 <?php $conn->close(); ?>
+<script>
+    $( document ).ready(function() {
+      $("#versek").addClass("active");
+    });
+</script>
 <?php require 'lablec.php'; ?>
