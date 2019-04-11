@@ -1,29 +1,23 @@
 <?php require 'fejlec.php'; ?>
 <?php require 'connect.php'; ?>
-<div class="poszt">
+<div class="versek">
 <div class="container">
+
     <h1>Versek</h1>
     <?php
-        $sql = "SELECT cim, szoveg, Kep_ID, vers, datum, Post_ID, video, DATE_FORMAT(datum, '%Y-%m-%d') AS date FROM post WHERE vers = 1 ORDER BY `date` DESC, `Post_ID` DESC;";
+        $sql = "SELECT cim, szoveg, utvonal, vers, datum, Post_ID, video, DATE_FORMAT(datum, '%Y-%m-%d') AS date FROM post WHERE vers = 1 ORDER BY `date` DESC, `Post_ID` DESC;";
         $result = $conn->query($sql);
         $resultCeck = mysqli_num_rows($result);
         if ($resultCeck > 0) {
             while($row = mysqli_fetch_assoc($result))
             {   
-                //echo '<div class="poszt">';
+                echo '<div class="poszt">';
                 if ($row['cim'] != NULL) {
                     echo   '<h2>' . $row['cim'] . '</h2>';
                 }
 
-                if ($row['Kep_ID'] != NULL) {
-                    $kep_id = $row['Kep_ID'];
-                    $sql = "SELECT utvonal FROM kep WHERE Kep_ID = '$kep_id' ORDER BY Kep_ID DESC LIMIT 1;";
-                    $result2 = mysqli_query($conn, $sql);
-                    $row2 = mysqli_fetch_assoc($result2);
-                    $utvonal = $row2['utvonal'];
-
+                    $utvonal = $row['utvonal'];
                     echo '<img src=' . $utvonal . '>';
-                }
                 
                 if ($row['szoveg'] != NULL) {
                     echo   '<p>' . $row['szoveg'] . '</p>';
@@ -48,6 +42,7 @@
             }
         }
     ?>
+</div>
 </div>
 <?php $conn->close(); ?>
 <script>

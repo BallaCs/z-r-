@@ -8,7 +8,7 @@
                 <div class="row">
                 <?php
                     require 'connect.php';
-                    $sql = "SELECT cim, Kep_ID, datum, Post_ID,DATE_FORMAT(datum, '%Y-%m-%d') AS date FROM post ORDER BY `date` DESC, `Post_ID` DESC;";
+                    $sql = "SELECT cim, utvonal, datum, Post_ID,DATE_FORMAT(datum, '%Y-%m-%d') AS date FROM post ORDER BY `date` DESC, `Post_ID` DESC;";
                     $result = $conn->query($sql);
                     $resultCeck = mysqli_num_rows($result);
                     if ($resultCeck > 0) {
@@ -22,15 +22,9 @@
                                 echo '<a href="#" onclick="confirmTorles(\'poszt-torles.php?id=' .$row['Post_ID'] .'\')"><i class="fas fa-trash-alt"></i> Törlés</a>';
                             }  
                             echo '<a href="single-post.php?id=' . $row['Post_ID'] . '&cim=' . $row['cim'] . '">';
-                            if ($row['Kep_ID'] != 0) {
-                                $kep_id = $row['Kep_ID'];
-                                $sql = "SELECT utvonal FROM kep WHERE Kep_ID = '$kep_id' ORDER BY Kep_ID DESC LIMIT 1;";
-                                $result2 = mysqli_query($conn, $sql);
-                                $row2 = mysqli_fetch_assoc($result2);
-                                $utvonal = $row2['utvonal'];
-
+                              
+                                $utvonal = $row['utvonal'];
                                 echo '<img src=' . $utvonal . '>';
-                            }
                             
                             if ($row['cim'] != NULL) {
                                 echo   '<h2>' . $row['cim'] . '</h2>';

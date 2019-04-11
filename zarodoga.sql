@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2019. Ápr 10. 21:33
+-- Létrehozás ideje: 2019. Ápr 11. 13:48
 -- Kiszolgáló verziója: 10.1.37-MariaDB
 -- PHP verzió: 7.3.1
 
@@ -33,15 +33,6 @@ CREATE TABLE `album` (
   `albumNev` varchar(50) COLLATE utf8_hungarian_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
---
--- A tábla adatainak kiíratása `album`
---
-
-INSERT INTO `album` (`Album_ID`, `albumNev`) VALUES
-(1, 'Csani'),
-(2, 'EgyÃ©b'),
-(3, 'SzÃ¡ntÃ³');
-
 -- --------------------------------------------------------
 
 --
@@ -53,30 +44,6 @@ CREATE TABLE `kep` (
   `utvonal` varchar(50) COLLATE utf8_hungarian_ci NOT NULL,
   `Album_ID` int(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
-
---
--- A tábla adatainak kiíratása `kep`
---
-
-INSERT INTO `kep` (`Kep_ID`, `utvonal`, `Album_ID`) VALUES
-(4, 'assets/kepek/5cadbd44cc6675.83910324.jpg', 1),
-(5, 'assets/kepek/5cadbd44efa8d2.94863710.png', 1),
-(7, 'assets/kepek/5cadc1e9070599.23815502.jpg', 1),
-(8, 'assets/kepek/5cadc213b95bd8.18086998.jpg', 1),
-(10, 'assets/kepek/5cadf890462030.10198409.jpg', 1),
-(11, 'assets/kepek/5cae02a4b2a9a9.56060225.jpg', 1),
-(12, 'assets/kepek/5cae02b8b87684.82260556.jpg', 1),
-(13, 'assets/kepek/5cae2d20bcf667.09815177.jpg', 1),
-(14, 'assets/kepek/5cae40fd22a5f8.54722684.jpg', 2),
-(15, 'assets/kepek/5cae40fd44a766.81307304.jpg', 2),
-(16, 'assets/kepek/5cae40fd5dc946.76014997.jpg', 2),
-(17, 'assets/kepek/5cae41bbe54415.65979546.jpg', 3),
-(18, 'assets/kepek/5cae41bc094a56.68798884.jpg', 3),
-(19, 'assets/kepek/5cae41bc141181.81667424.jpg', 3),
-(20, 'assets/kepek/5cae42408dc8d1.64897792.jpg', 1),
-(21, 'assets/kepek/5cae4240a45e51.51831570.jpg', 1),
-(22, 'assets/kepek/5cae42aec21d02.27727579.jpg', 3),
-(23, 'assets/kepek/5cae4305e5b261.83840093.jpg', 2);
 
 -- --------------------------------------------------------
 
@@ -117,20 +84,16 @@ CREATE TABLE `post` (
   `szoveg` text COLLATE utf8_hungarian_ci,
   `vers` tinyint(1) DEFAULT NULL,
   `video` varchar(40) COLLATE utf8_hungarian_ci DEFAULT NULL,
-  `datum` date DEFAULT NULL,
-  `Kep_ID` int(6) DEFAULT NULL
+  `utvonal` varchar(50) COLLATE utf8_hungarian_ci NOT NULL,
+  `datum` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `post`
 --
 
-INSERT INTO `post` (`Post_ID`, `cim`, `szoveg`, `vers`, `video`, `datum`, `Kep_ID`) VALUES
-(3, 'CsanÃ¡d', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec velit velit, vehicula sit amet lacinia eget, sodales id velit. Mauris a commodo metus, ac porttitor lacus. Nulla neque odio, viverra ac arcu facilisis, tincidunt viverra velit. Etiam semper consequat nisl sed elementum. In id sem laoreet, semper nisl vitae, posuere diam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc in finibus erat. Proin suscipit gravida nisi, sed egestas felis lobortis vitae. Sed malesuada felis odio, ac consectetur felis pretium eget. Nunc at commodo diam, id molestie tortor.\r\n\r\nMorbi et porttitor justo. Integer turpis sapien, pulvinar quis erat eu, fringilla porttitor elit. Vestibulum metus metus, tempor vitae erat eu, ullamcorper accumsan ligula. Vestibulum sagittis mauris sed risus accumsan tempus. Donec sed mauris nec metus vehicula egestas. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque laoreet neque tempus, malesuada erat vel, dignissim nibh. Nulla et accumsan nunc, id aliquet libero. Aliquam erat volutpat.\r\n\r\nSed aliquet lacinia posuere. Fusce eget orci ligula. Quisque molestie nunc et felis suscipit, a bibendum odio tincidunt. Donec gravida libero at porttitor consectetur. Duis justo elit, posuere sed nisl in, pellentesque vestibulum augue. Sed sapien augue, porta in tincidunt in, tempus dictum sem. Sed id sollicitudin felis, eu maximus magna. Aenean nec odio lorem. Nunc egestas augue elit, at bibendum tortor tincidunt sed. Mauris sollicitudin sem in augue varius, nec interdum dui interdum. Nulla ac ex at est maximus feugiat eget eu lectus. Donec fermentum lectus in dictum iaculis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.', 0, '', '2019-04-10', 11),
-(4, 'Valami', 'AkÃ¡rmi', 0, '', '2019-04-10', 12),
-(6, 'A fekete zongora', 'Bolond hangszer: sÃ­r, nyerit Ã©s bÃºg.\r\nFusson, akinek nincs bora,\r\nEz a fekete zongora.\r\nVak mestere tÃ©pi, cibÃ¡lja,\r\nEz az Ã‰let melÃ³diÃ¡ja.\r\nEz a fekete zongora.\r\n\r\nFejem zÃºgÃ¡sa, szemem kÃ¶nnye,\r\nTornÃ¡zÃ³ vÃ¡gyaim tora,\r\nEz mind, mind: ez a zongora.\r\nBoros, bolond szivemnek vÃ©re\r\nKiÃ¶mlik az Å‘ Ã¼temÃ©re.\r\nEz a fekete zongora.', 1, 'IUADrfxaAWc', '2019-04-10', 13),
-(7, 'sfdds', 'Morbi et porttitor justo. Integer turpis sapien, pulvinar quis erat eu, fringilla porttitor elit. Vestibulum metus metus, tempor vitae erat eu, ullamcorper accumsan ligula. Vestibulum sagittis mauris sed risus accumsan tempus. Donec sed mauris nec metus vehicula egestas. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque laoreet neque tempus, malesuada erat vel, dignissim nibh. Nulla et accumsan nunc, id aliquet libero. Aliquam erat volutpat.', 0, '', '2019-04-10', 22),
-(8, 'Jonah Hill', 'Things can\'t get worse as Jeffrey (Jonah Hill) embarrasses himself at dinner... that is until he learns his boss (Beck Bennett), coworker (Kenan Thompson), and their wives (Kate McKinnon, Aidy Bryant) can hear him berating himself in the bathroom. [Season 39, 2014]', 1, 'SzaIlHybawg', '2019-04-10', 23);
+INSERT INTO `post` (`Post_ID`, `cim`, `szoveg`, `vers`, `video`, `utvonal`, `datum`) VALUES
+(9, 'Lorem Ipsum', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ornare, orci et rhoncus viverra, est ipsum luctus mauris, maximus commodo odio erat ut ex. Mauris a scelerisque est. Suspendisse sapien odio, feugiat et sapien at, efficitur mollis massa. Curabitur a accumsan lacus. Cras sagittis sapien ac enim sollicitudin, sed venenatis sem sagittis. Nulla blandit, ante eget tristique cursus, lectus nibh placerat orci, id blandit leo est eu leo. Phasellus blandit nunc in massa semper, sit amet porta justo placerat. Duis posuere diam nec lectus suscipit molestie. Suspendisse efficitur quam sit amet ante sodales, a rhoncus enim mattis. Suspendisse mollis ullamcorper nulla at viverra. Vestibulum viverra, nisl quis aliquam efficitur, sem sapien porttitor mi, fringilla hendrerit diam est ut nunc.', 0, '', 'assets/kepek-poszt/5caf25b934dd05.57597390.jpg', '2019-04-11');
 
 -- --------------------------------------------------------
 
@@ -177,8 +140,7 @@ ALTER TABLE `linkmegoszt`
 -- A tábla indexei `post`
 --
 ALTER TABLE `post`
-  ADD PRIMARY KEY (`Post_ID`),
-  ADD KEY `Kep_ID` (`Kep_ID`);
+  ADD PRIMARY KEY (`Post_ID`);
 
 --
 -- A kiírt táblák AUTO_INCREMENT értéke
@@ -206,7 +168,7 @@ ALTER TABLE `linkmegoszt`
 -- AUTO_INCREMENT a táblához `post`
 --
 ALTER TABLE `post`
-  MODIFY `Post_ID` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `Post_ID` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Megkötések a kiírt táblákhoz
@@ -217,12 +179,6 @@ ALTER TABLE `post`
 --
 ALTER TABLE `kep`
   ADD CONSTRAINT `kep_ibfk_1` FOREIGN KEY (`Album_ID`) REFERENCES `album` (`Album_ID`);
-
---
--- Megkötések a táblához `post`
---
-ALTER TABLE `post`
-  ADD CONSTRAINT `post_ibfk_1` FOREIGN KEY (`Kep_ID`) REFERENCES `kep` (`Kep_ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -12,7 +12,7 @@ if (isset($_GET['cim']) && isset($_GET['id'])) {
 <div class="container">
     
     <?php
-        $sql = "SELECT cim, szoveg, Kep_ID, datum, Post_ID, video FROM post WHERE Post_ID='$post_id';";
+        $sql = "SELECT cim, szoveg, utvonal, datum, Post_ID, video FROM post WHERE Post_ID='$post_id';";
         $result = $conn->query($sql);
         $resultCeck = mysqli_num_rows($result);
         if ($resultCeck > 0) {
@@ -24,15 +24,10 @@ if (isset($_GET['cim']) && isset($_GET['id'])) {
                 }
                 echo '<div class="row">';
                 echo '<div class="col-12 col-md-6">';
-                if ($row['Kep_ID'] != 0) {
-                    $kep_id = $row['Kep_ID'];
-                    $sql = "SELECT utvonal FROM kep WHERE Kep_ID = '$kep_id' ORDER BY Kep_ID DESC LIMIT 1;";
-                    $result2 = mysqli_query($conn, $sql);
-                    $row2 = mysqli_fetch_assoc($result2);
-                    $utvonal = $row2['utvonal'];
 
+                    $utvonal = $row['utvonal'];
                     echo '<img src=' . $utvonal . '>';
-                }
+                
                 echo '</div>';
                 echo '<div class="col-12 col-md-6">';
                 if ($row['szoveg'] != NULL) {
@@ -64,7 +59,7 @@ if (isset($_GET['cim']) && isset($_GET['id'])) {
     <div class="row">
         <?php
             require 'connect.php';
-            $sql = "SELECT cim, Kep_ID, datum, Post_ID,DATE_FORMAT(datum, '%Y-%m-%d') AS date FROM post WHERE Post_ID != '$post_id' ORDER BY `date` DESC, `Post_ID` DESC LIMIT 4;";
+            $sql = "SELECT cim, utvonal, datum, Post_ID,DATE_FORMAT(datum, '%Y-%m-%d') AS date FROM post WHERE Post_ID != '$post_id' ORDER BY `date` DESC, `Post_ID` DESC LIMIT 4;";
             $result = $conn->query($sql);
             $resultCeck = mysqli_num_rows($result);
             if ($resultCeck > 0) {
@@ -72,15 +67,9 @@ if (isset($_GET['cim']) && isset($_GET['id'])) {
                 {   
                     echo '<div class="col-6 col-sm-4 col-md-3"><div class="post-preview">';
                         echo '<a href="single-post.php?id=' . $row['Post_ID'] . '&cim=' . $row['cim'] . '">';
-                            if ($row['Kep_ID'] != 0) {
-                                $kep_id = $row['Kep_ID'];
-                                $sql = "SELECT utvonal FROM kep WHERE Kep_ID = '$kep_id' ORDER BY Kep_ID DESC LIMIT 1;";
-                                $result2 = mysqli_query($conn, $sql);
-                                $row2 = mysqli_fetch_assoc($result2);
-                                $utvonal = $row2['utvonal'];
 
-                                echo '<img src=' . $utvonal . '>';
-                            }
+                                $utvonal = $row['utvonal'];
+                                echo '<img src=' . $utvonal . '>';                           
                             
                             if ($row['cim'] != NULL) {
                                 echo   '<h2>' . $row['cim'] . '</h2>';

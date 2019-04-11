@@ -14,24 +14,7 @@
             </div>
           </div>
           <div class="col-5">
-            <select class="form-control" name="album">
-            <option value="" disabled selected>Melyik albumba kerüljön?</option>';
-            require 'connect.php';
-
-            $sql = "SELECT albumNev FROM album";
-            $result = $conn->query($sql);
-            $resultCeck = mysqli_num_rows($result);
-            if ($resultCeck > 0) {
-                while($row = mysqli_fetch_assoc($result))
-                {
-                  echo  '<option>' . $row['albumNev'] . '</option>';
-                }
-            }
-            ?>
-            <?php $conn->close(); ?>
-            <?php echo                
-            '<option value="" disabled>Új album létrehozása a Galériában!</option>
-            </select>
+            <input type="url" class="form-control" name="video" placeholder="Youtube video link">
           </div>
           <div class="col-1">
             <div class="checkbox">
@@ -64,10 +47,7 @@
         </script>
       <?php
       echo
-      '<div class="form-group">
-        <input type="url" class="form-control" name="video" placeholder="Youtube video link">
-      </div>
-      <button type="submit" name="submit" class="btn btn-primary">Közzétesz</button>
+      '<button type="submit" name="submit" class="btn btn-primary">Közzétesz</button>
       </form>
     </div>';
   }
