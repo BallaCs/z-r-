@@ -2,15 +2,15 @@
 <?php 
 require 'connect.php';
 $id = mysqli_real_escape_string($conn, $_GET['id']); 
-$sql = "SELECT cim, szoveg, Kep_ID, datum, Post_ID, video, vers FROM post WHERE Post_ID = " .$id .";";
+$sql = "SELECT cim, szoveg, utvonal, datum, Post_ID, video, vers FROM post WHERE Post_ID = " .$id .";";
 $result = $conn->query($sql);
 $row = mysqli_fetch_assoc($result);
 
         $cim = $row['cim'];
         
-        if ($row['Kep_ID'] != 0) {
-            $kep = $row['Kep_ID'];
-        }
+
+            $utvonal = $row['utvonal'];
+
 
         $szoveg = $row['szoveg'];
         
@@ -37,27 +37,11 @@ $row = mysqli_fetch_assoc($result);
       <div class="col-7">
         <div class="custom-file">
             <input type="file" accept=".jpg,.jpeg,.png" class="custom-file-input" name="file">
-            <label class="custom-file-label" for="file" data-browse="Tallózás...">Új kép választásával az előző csak a posztból törlődik, az albumból nem!</label>
+            <label class="custom-file-label" for="file" data-browse="Tallózás...">Csak ha új képet akarsz!</label>
         </div>
       </div>
       <div class="col-4">
-        <select class="form-control" name="album">
-        <option value="" disabled selected>Melyik albumba kerüljön?</option>'
-        <?php require 'connect.php';
-
-        $sql = "SELECT albumNev FROM album";
-        $result = $conn->query($sql);
-        $resultCeck = mysqli_num_rows($result);
-        if ($resultCeck > 0) {
-            while($row = mysqli_fetch_assoc($result))
-            {
-              echo  '<option>' . $row['albumNev'] . '</option>';
-            }
-        }
-        
-        $conn->close(); ?>
-        <option value="" disabled>Új album létrehozása a Galériában!</option>
-        </select>
+        <input type="url" class="form-control" name="video" placeholder="Youtube video link" <?php if($video != NULL) echo 'value="https://www.youtube.com/watch?v='. $video .'"' ;?>>
       </div>
       <div class="col-1">
         <div class="checkbox">
@@ -87,9 +71,6 @@ $row = mysqli_fetch_assoc($result);
         })
       })
     </script>
- <div class="form-group">
-    <input type="url" class="form-control" name="video" placeholder="Youtube video link" <?php if($video != NULL) echo 'value="https://www.youtube.com/watch?v='. $video .'"' ;?>>
-  </div>
   <button type="submit" name="submit" class="btn btn-primary">Módosít</button>
   </form>
 </div>
