@@ -16,7 +16,7 @@
                         {   
                             echo '<div class="col-12 col-sm-6"><div class="post-preview">';
 
-                            if (isset($_SESSION['username'])){
+                            if (isset($_SESSION['username']) && $_SESSION['username'] == 'bora'){
                                 echo '<a href="poszt-szerkesztes.php?id=' .$row['Post_ID'] .'"><i class="fas fa-edit"></i> Szerkesztés</a>';
                                 //echo '<a href="poszt-torles.php?id=' .$row['Post_ID'] .'"><i class="fas fa-trash-alt"></i> Törlés</a>';
                                 echo '<a href="#" onclick="confirmTorles(\'poszt-torles.php?id=' .$row['Post_ID'] .'\')"><i class="fas fa-trash-alt"></i> Törlés</a>';

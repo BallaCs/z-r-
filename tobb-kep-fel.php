@@ -3,12 +3,12 @@ if(isset($_POST['submit']) && $_FILES["file"]["error"][0] != 4 && !empty($_POST[
     
     require 'connect.php';
 
-    $album = mysqli_real_escape_string($conn, $_POST['album']);
-    //Count total files
-    $countfiles = mysqli_real_escape_string($conn, count($_FILES['file']['name']));
+    $album = $_POST['album'];
+    //fájlok megszámlálása
+    $countfiles = count($_FILES['file']['name']);
 
     $conn->close();
- //Looping all files
+ //fájlokon végigmenni ciklussal
  for($i=0;$i<$countfiles;$i++){
  
      if ($_FILES["file"]["error"][$i] == 0) {
@@ -47,12 +47,6 @@ if(isset($_POST['submit']) && $_FILES["file"]["error"][0] != 4 && !empty($_POST[
             echo "Nem megengedett fájl formátum!";
         }
     }
-  echo 'bent';
-  header("Location: galeria.php");
-
-
-
-
  }
 }else {
     echo 'kint';

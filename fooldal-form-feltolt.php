@@ -1,5 +1,5 @@
 <?php
-if(isset($_POST['submit']) && (!empty($_POST['cim']) || !empty($_POST['szoveg']) || !empty($_POST['video']) || $_FILES["file"]["error"] == 0)){
+if(isset($_POST['submit']) && $_FILES["file"]["error"] == 0 && (!empty($_POST['cim']) || !empty($_POST['szoveg']) || !empty($_POST['video']) )){
     
     require 'connect.php';
 
@@ -7,12 +7,6 @@ if(isset($_POST['submit']) && (!empty($_POST['cim']) || !empty($_POST['szoveg'])
         $cim = mysqli_real_escape_string($conn, $_POST['cim']);
     } else {
         $cim = NULL;
-    }
-
-    if (!empty($_POST['album'])) {
-        $album = mysqli_real_escape_string($conn, $_POST['album']);
-    } else {
-        $album = 'Egyéb';
     }
 
     if (!empty($_POST['vers'])) {
