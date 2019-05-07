@@ -31,7 +31,5 @@ if(isset($_POST['submit']) && (!empty($_POST['album_nev'])) ){
 
     <?php
     header("Location: galeria.php");
-}else{
-    echo 'nononono';
 }
 ?>

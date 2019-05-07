@@ -16,6 +16,4 @@
 
   header("Location: galeria.php");
 
-    
-//}
 ?>

@@ -5,9 +5,6 @@ $host = '';
 
 if( !empty($url) )
 {
-    $url_data = parse_url($url);
-    $host = $url_data['host'];
-
     $file = fopen($url,'r');
     
     if(!$file)
@@ -24,7 +21,7 @@ if( !empty($url) )
 
         $meta_tags = get_meta_tags($url);
 
-        // Get the title
+        // Cím
         $title = '';
 
         if( array_key_exists('og:title',$meta_tags) )
@@ -53,7 +50,7 @@ if( !empty($url) )
 
         $title = ucfirst($title);
 
-        // Get the description
+        // Leírás
         $desc = '';
         
         if( array_key_exists('description',$meta_tags) )
@@ -75,7 +72,7 @@ if( !empty($url) )
 
         $desc = ucfirst($desc);
 
-        // Get url of preview image
+        // Kép url
         $img_url = '';
         if( array_key_exists('og:image',$meta_tags) )
         {
@@ -95,7 +92,6 @@ if( !empty($url) )
         }
         else
         {
-            // Image not found in meta tags so find it from content
             $img_pattern = '/<img[^>]*'.'src=[\"|\'](.*)[\"|\']/Ui';
             $images = '';
             preg_match_all($img_pattern,$content,$images,PREG_PATTERN_ORDER);
@@ -110,7 +106,7 @@ if( !empty($url) )
                 {
                     list($width,$height,$type,$attr) = getimagesize($images[$i]);
                     
-                    if( $width > 600 ) // Select an image of width greater than 600px
+                    if( $width > 600 )
                     {
                         $img_url = $images[$i];
                         break;
